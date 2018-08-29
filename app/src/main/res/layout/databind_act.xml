@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.xzone.studyexecutorservice.User"/>
+        <variable
+            name="user"
+            type="User"></variable>
+        <variable
+            name="handler"
+            type="com.xzone.studyexecutorservice.databindingstudy.MyHandlers"></variable>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="#00ff00"
+            android:text="@{user.firstName}"
+            android:onClick="@{handler.onClickFriend}"
+            android:textColor="#ff0000"/>
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="80dp"
+            android:background="#00ff00"
+            android:layout_height="80dp"
+            android:text="@{user.lastName}"
+            android:textColor="#ff0000"/>
+    </LinearLayout>
+</layout>

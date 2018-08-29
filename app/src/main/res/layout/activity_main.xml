@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/btn_study_reflection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="反射知识"/>
+        <Button
+            android:id="@+id/btn_study_X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="泛型知识"/>
+        <Button
+            android:id="@+id/btn_study_glide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Glide使用"/>
+        <Button
+            android:id="@+id/btn_study_canvas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="画布知识"/>
+        <Button
+            android:id="@+id/btn_study_annotation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注解知识"/>
+        <Button
+            android:id="@+id/btn_goto_learn_okhttp"
+            android:text="okhttp知识"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_to_dragger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="toDragger"/>
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Button
+            android:id="@+id/btn_nofication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="notification"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="start"/>
+
+            <Button
+                android:id="@+id/btnb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bind"/>
+
+            <Button
+                android:id="@+id/btnc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="unbind"/>
+
+            <Button
+                android:id="@+id/btnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="stop"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnGetWidth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="getWidth"/>
+
+            <Button
+                android:id="@+id/btnGetMeasureWidth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="getMeasuereWidth"/>
+
+            <Button
+                android:id="@+id/parcelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="parcelable"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/softrefrence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="studysoftrefrence"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bind_remote_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bind_remote_service"/>
+
+            <Button
+                android:id="@+id/go_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bind_remote_service"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_goto_study_bind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn_goto_study_bind"/>
+
+        <Button
+            android:id="@+id/btn_goto_study_okhttp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn_goto_study_okhttp"/>
+
+        <Button
+            android:id="@+id/btn_goto_study_window"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn_goto_study_window"/>
+
+        <Button
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn_goto_test"/>
+
+        <com.xzone.studyexecutorservice.MyPointView
+            android:id="@+id/mpv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00ff00"
+            android:padding="20dp"
+            android:visibility="gone"/>
+
+        <com.xzone.studyexecutorservice.MyRectView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="#000000"
+            android:padding="10dp"/>
+
+        <com.xzone.studyexecutorservice.MyLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_hello"
+                android:layout_width="100px"
+                android:layout_height="wrap_content"
+                android:background="#ff0000"
+                android:text="abcd"/>
+        </com.xzone.studyexecutorservice.MyLayout>
+    </LinearLayout>
+
+</ScrollView>

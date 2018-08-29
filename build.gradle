@@ -1,0 +1,94 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        // tinkersupport插件, 其中lastest.release指拉取最新版本，也可以指定明确版本号，例如1.0.4
+        classpath "com.tencent.bugly:tinker-support:1.1.2"
+
+
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+task hello {
+    def closure = { int a, String b ->
+        println "a=${a}, b=$b, I am a closure!"
+    }
+    def closureb={
+        a,b->
+            println a+b+"nihao"
+    }
+    // 这里省略了闭包的参数类型
+    def test = { a, b ->
+        println "a=${a}, b=${b}, I am a closure!"
+    }
+    def ryg = { a, b ->
+        a + b
+    }
+    def check=
+    {b ->
+        assert b
+
+    }
+    closure(100, "renyugang")
+    test.call(100, 200)
+    def c = ryg(100, 200)
+    closureb(1,5)
+    haveFun()
+    println c
+}
+hello.doFirst {
+
+    println "before"
+}
+hello.doLast {
+    println "after"
+}
+
+def checks(String name) {
+    // name non-null and non-empty according to Gro    ovy Truth
+    assert name
+    // safe navigation + Groovy Truth to check
+    assert name?.size() > 3
+}
+
+task(yugangshuo).doLast {
+    println "start execute yuangshuo"
+    haveFun()
+}
+
+
+def haveFun() {
+    println "have fun!"
+    System.out.println("have fun!");
+    1
+    def file1 = new File("a.txt")
+    def file2 = new File("a.txt")
+    assert file1 == file2
+    assert !file1.is(file2)
+}
+
+class Book {
+    private String name
+
+    String getName() { return name }
+
+    void setName(String name) { this.name = name }
+}
