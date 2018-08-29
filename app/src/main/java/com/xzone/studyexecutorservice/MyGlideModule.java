@@ -10,6 +10,8 @@ import com.bumptech.glide.module.GlideModule;
 
 import java.io.InputStream;
 
+import okhttp3.OkHttpClient;
+
 /**
  * Created by xl on 2018/8/29.
  */
@@ -24,6 +26,9 @@ public class MyGlideModule implements GlideModule {
 
     @Override
     public void registerComponents(Context context, Glide glide) {
-        glide.register(GlideUrl.class, InputStream.class, new OkHttpGlideUrlLoader.Factory());
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.addInterceptor(new ProgressInterceptor());
+        OkHttpClient okHttpClient = builder.build();
+        glide.register(GlideUrl.class, InputStream.class, new OkHttpGlideUrlLoader.Factory(okHttpClient));
     }
 }
