@@ -11,36 +11,55 @@
         android:orientation="vertical"
         >
 
-        <Button
-            android:id="@+id/btn_study_reflection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="反射知识"/>
-        <Button
-            android:id="@+id/btn_study_X"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="泛型知识"/>
-        <Button
-            android:id="@+id/btn_study_glide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Glide使用"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_collapsing_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="collaspelayout"/>
+
+            <Button
+                android:id="@+id/btn_study_reflection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="反射知识"/>
+            <Button
+                android:id="@+id/btn_study_X"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="泛型知识"/>
+            <Button
+                android:id="@+id/btn_study_glide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Glide使用"/>
+        </LinearLayout>
+
+
+
+
+
+
         <Button
             android:id="@+id/btn_study_canvas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="画布知识"/>
+
         <Button
             android:id="@+id/btn_study_annotation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="注解知识"/>
+
         <Button
             android:id="@+id/btn_goto_learn_okhttp"
-            android:text="okhttp知识"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="okhttp知识"/>
 
         <TextView
             android:id="@+id/tv_to_dragger"

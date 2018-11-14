@@ -24,6 +24,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.bumptech.glide.request.target.ViewTarget;
 
+
 /**
  * Created by xl on 2018/8/25.
  */
@@ -76,6 +77,7 @@ public class GlideAct extends Activity {
         };
         Glide.with(this)
                 .load(R.drawable.bg)
+                .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true).into(iv2);
     }

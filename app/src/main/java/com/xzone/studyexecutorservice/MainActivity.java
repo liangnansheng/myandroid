@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.os.Process;
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -32,13 +34,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     int i = 0;
 
     private void getWidthHeight() {
         int measuredState = tvHello.getMeasuredState();
         Log.i("getWidthHeight", "width=" + measuredState + "View.MeasureSpec.AT_MOST " + View.MeasureSpec.AT_MOST + "View.MeasureSpec.EXACTLY " + View.MeasureSpec.EXACTLY);
-
         int widthMeasuerSpec = View.MeasureSpec.makeMeasureSpec(2300, View.MeasureSpec.UNSPECIFIED);
         int heightMeasuerSpec = View.MeasureSpec.makeMeasureSpec(2300, View.MeasureSpec.UNSPECIFIED);
         tvHello.measure(widthMeasuerSpec, heightMeasuerSpec);
@@ -69,18 +70,24 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.i("MyService", "onServiceConnected   " + name);
+            BookManager bookManager = BookManager.Stub.asInterface(service);
+            try {
+                bookManager.addBook(new Book("dasfdas", 2.2));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
 //            binder = (MyService.MyBinder) service;
-            localBinder = (LocalService.LocalBinder) service;
+//            localBinder = (LocalService.LocalBinder) service;
 
-            localBinder.getService().setmPassData(new LocalService.PassData() {
-                @Override
-                public void onPassData(int num) {
-                    Log.i("abdd", num + "  T" + Thread.currentThread().getName());
-                    Message obtain = Message.obtain();
-                    obtain.what = num;
-                    handler.sendMessage(obtain);
-                }
-            });
+//            localBinder.getService().setmPassData(new LocalService.PassData() {
+//                @Override
+//                public void onPassData(int num) {
+//                    Log.i("abdd", num + "  T" + Thread.currentThread().getName());
+//                    Message obtain = Message.obtain();
+//                    obtain.what = num;
+//                    handler.sendMessage(obtain);
+//                }
+//            });
         }
 
         @Override
@@ -122,6 +129,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.btn_collapsing_layout:
+                startActivity(new Intent(this, CollapsingToolBarLayoutAct.class));
+                break;
+        }
+    }
+
     static class MyRunnable implements Runnable {
 
         @Override
@@ -150,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ExecutorService executorService = Executors.newCachedThreadPool();
+        findViewById(R.id.btn_collapsing_layout).setOnClickListener(this);
         findViewById(R.id.btn_study_glide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -272,8 +290,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        tvHello = findViewById(R.id.tv_hello);
-        btnParcelable = findViewById(R.id.parcelable);
+        tvHello = (TextView) findViewById(R.id.tv_hello);
+        btnParcelable = (Button) findViewById(R.id.parcelable);
         btnParcelable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -283,12 +301,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        tv = findViewById(R.id.tv);
-        btna = findViewById(R.id.btna);
-        btnb = findViewById(R.id.btnb);
-        btnc = findViewById(R.id.btnc);
-        btnGetMeasureWidth = findViewById(R.id.btnGetMeasureWidth);
-        btngetWidth = findViewById(R.id.btnGetWidth);
+        tv = (TextView) findViewById(R.id.tv);
+        btna = (Button) findViewById(R.id.btna);
+        btnb = (Button) findViewById(R.id.btnb);
+        btnc = (Button) findViewById(R.id.btnc);
+        btnGetMeasureWidth = (Button) findViewById(R.id.btnGetMeasureWidth);
+        btngetWidth = (Button) findViewById(R.id.btnGetWidth);
         btnGetMeasureWidth.setOnClickListener(listener);
         btngetWidth.setOnClickListener(listener);
 //        BitmapFactory.decodestr
@@ -319,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        btnd = findViewById(R.id.btnd);
+        btnd = (Button) findViewById(R.id.btnd);
         btnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -327,11 +345,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         btnb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                startService(intent);
                 isBind = true;
+                intent = new Intent(MainActivity.this, RemoteService.class);
+                Log.i("onClick", Process.myPid() + "");
                 bindService(intent, serviceConnection, BIND_AUTO_CREATE);
             }
         });
@@ -342,7 +363,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, StudyBinderActivity.class));
             }
         });
-        mpv = findViewById(R.id.mpv);
+        mpv = (MyPointView) findViewById(R.id.mpv);
         mpv.post(new Runnable() {
             @Override
             public void run() {
@@ -383,9 +404,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ThreadWait threadWait1 =  new ThreadWait("wait thread1");
-        ThreadWait threadWait2 =  new ThreadWait("wait thread2");
-        ThreadWait threadWait3 =  new ThreadWait("wait thread3");
+        ThreadWait threadWait1 = new ThreadWait("wait thread1");
+        ThreadWait threadWait2 = new ThreadWait("wait thread2");
+        ThreadWait threadWait3 = new ThreadWait("wait thread3");
         ThreadNotify threadNotify = new ThreadNotify("notify thread");
         threadNotify.start();
         threadWait1.start();
@@ -474,4 +495,5 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
 }

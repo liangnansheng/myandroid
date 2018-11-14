@@ -63,9 +63,11 @@
             android:name=".StudyGenericityActivity"/>
         <activity android:name=".StudyCanvasActivity"/>
         <activity android:name=".GlideAct"/>
+        <activity android:name=".CollapsingToolBarLayoutAct"/>
+
         <meta-data
             android:name="com.xzone.studyexecutorservice.MyGlideModule"
-            android:value="GlideModule" />
+            android:value="GlideModule"/>
 
     </application>
 

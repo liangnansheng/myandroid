@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.Process;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -28,7 +29,7 @@ public class RemoteService extends Service {
     Binder stub = new BookManager.Stub() {
         @Override
         public void addBook(Book book) throws RemoteException {
-            Log.i("addBook", Thread.currentThread().getName() + "   " + "addbook");
+            Log.i("addBook", Thread.currentThread().getName() + "   " + "addbook"+ Process.myPid());
             mBooks.add(book);
         }
 
